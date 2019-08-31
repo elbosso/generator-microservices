@@ -1,6 +1,6 @@
 package de.elbosso.microgenerator.handlers.image;
 
-public class QRCodeImageSequence extends java.lang.Object implements io.javalin.http.Handler
+public class QRCodeImageSequence extends PNGEncoder
 {
 	private final de.elbosso.util.generator.generalpurpose.QRCodeImageSequence qrCodeImageSequence=new de.elbosso.util.generator.generalpurpose.QRCodeImageSequence();
 
@@ -28,11 +28,7 @@ public class QRCodeImageSequence extends java.lang.Object implements io.javalin.
 			dim=320;
 		}
 		qrCodeImageSequence.setDimensionWidth(dim);
-		java.awt.image.BufferedImage img=qrCodeImageSequence.next();
-		java.io.ByteArrayOutputStream baos=new java.io.ByteArrayOutputStream();
-		javax.imageio.ImageIO.write(img,"png",baos);
-		baos.close();
 		ctx.contentType("image/png");
-		return new java.io.ByteArrayInputStream(baos.toByteArray());
+		return encode(qrCodeImageSequence.next());
 	}
 }
