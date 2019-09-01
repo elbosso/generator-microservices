@@ -13,4 +13,26 @@
 [![Github All Releases](https://img.shields.io/github/downloads/elbosso/generator-microservices/total.svg)](https://github.com/elbosso/generator-microservices)
 [![Website elbosso.github.io](https://img.shields.io/website-up-down-green-red/https/elbosso.github.io.svg)](https://elbosso.github.io/)
 
- 
+## Overview
+
+This project offers some of the test data generators i wrote as micro serices via http. One can use it either by just creating and starting the jar file by issuing the command
+
+```
+mvn compile package
+```
+
+and then starting the resulting monolithic jar file by issuing
+
+```
+$JAVA_HOME/bin/java -jar target/generator-microservices-<version>-jar-with-dependencies.jar
+```
+Alternatively one could just start the server using maven by  issuing
+
+```
+mvn compile exec:java
+```
+
+In both cases, the server starts on port 7000 - just point your browser to it and you see an overview of available generators together with their paths and possible parameters.
+
+However the recommended mode of using this is to use the provided Dockerfile and docker-compose.yml file in src/main/resources. It is probably better to actually use a proxy solution like traefik (the docker-compose is already prepared for this) or similar
+solutions so the services are actually accessible with a sound hostname and some default port.
