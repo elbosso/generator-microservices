@@ -36,6 +36,8 @@ public class GeneratorMicroservicesApp
 		de.elbosso.microgenerator.handlers.string.PlacesSequence.register(app);
 		de.elbosso.microgenerator.handlers.string.SurNameSequence.register(app);
 		de.elbosso.microgenerator.handlers.string.ZipSequence.register(app);
+		de.elbosso.microgenerator.handlers.string.LandmarkNameSequence.register(app);
+		de.elbosso.microgenerator.handlers.string.FamilyBusinessSequence.register(app);
 	}
 
 
