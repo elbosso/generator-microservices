@@ -17,9 +17,11 @@ public class GeneratorMicroservicesApp
 	public static void main(String[] args) {
 		Javalin app = Javalin.create(config ->
 				config
-						.registerPlugin(new RouteOverviewPlugin("/"))
+//						.registerPlugin(new RouteOverviewPlugin("/"))
 		.registerPlugin(new OpenApiPlugin(getOpenApiOptions()))
-		.enableWebjars()).start(7000);
+		.enableWebjars()
+				.addStaticFiles("/site")
+		).start(7000);
 		de.elbosso.microgenerator.handlers.date.SimpleRandomDateInThePastSequence.register(app);
 		de.elbosso.microgenerator.handlers.image.QRCodeImageSequence.register(app);
 		de.elbosso.microgenerator.handlers.number.GaussianRandomBoxMuller.register(app);
@@ -54,8 +56,8 @@ public class GeneratorMicroservicesApp
 			.version("1.0.0")
 			.description("de.elbosso.generator-microservices");
 		return new OpenApiOptions(applicationInfo)
-				.path("/swagger-docs")
-				.swagger(new SwaggerOptions("/swagger").title("My Swagger Documentation"))
+				.path("/open-api-spec")
+				.swagger(new SwaggerOptions("/try-it").title("de.elbosso.generator-microservices - try it!"))
 //				.reDoc(new ReDocOptions("/redoc").title("My ReDoc Documentation"))
 		;
 	}
