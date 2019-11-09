@@ -48,6 +48,11 @@ public class GeneratorMicroservicesApp
 		de.elbosso.microgenerator.handlers.string.ZipSequence.register(app);
 		de.elbosso.microgenerator.handlers.string.LandmarkNameSequence.register(app);
 		de.elbosso.microgenerator.handlers.string.FamilyBusinessSequence.register(app);
+		de.elbosso.microgenerator.handlers.java.lang.string.ClickBaitSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.lang.number.GaussianRandomBoxMullerHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.util.date.NowHandler.register(app);
+		de.elbosso.microgenerator.handlers.de.elbosso.util.generator.semantics.creditcard.CreditCardSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage.AvatarIconImageSequenceHandler.register(app);
 	}
 
 	private static OpenApiOptions getOpenApiOptions()

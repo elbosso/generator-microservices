@@ -2,7 +2,7 @@ package de.elbosso.microgenerator.handlers.image;
 
 import java.io.IOException;
 
-abstract class PNGEncoder extends java.lang.Object implements io.javalin.http.Handler
+public abstract class PNGEncoder extends java.lang.Object implements io.javalin.http.Handler
 {
 	protected java.io.InputStream encode(java.awt.image.BufferedImage img) throws IOException
 	{
