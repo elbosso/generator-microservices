@@ -1,5 +1,10 @@
 package de.elbosso.microgenerator.handlers.number;
 
+import io.javalin.plugin.openapi.annotations.OpenApi;
+import io.javalin.plugin.openapi.annotations.OpenApiContent;
+import io.javalin.plugin.openapi.annotations.OpenApiParam;
+import io.javalin.plugin.openapi.annotations.OpenApiResponse;
+
 public class GaussianRandomBoxMuller extends java.lang.Object implements io.javalin.http.Handler
 {
 	private final de.elbosso.util.generator.generalpurpose.GaussianRandomBoxMuller gaussianRandomBoxMuller=new de.elbosso.util.generator.generalpurpose.GaussianRandomBoxMuller();
@@ -12,7 +17,18 @@ public class GaussianRandomBoxMuller extends java.lang.Object implements io.java
 	}
 
 	@Override
-	public void handle(io.javalin.http.Context ctx) throws Exception
+/*	@OpenApi(
+			operationId = "getGaussianrandomboxmullerWithMeanWithVariance",
+			pathParams = {
+					@OpenApiParam(name = "mean", description = "mean",type = Number.class, required = false),
+					@OpenApiParam(name = "variance", description = "variance", type = Number.class, required = false)
+			},
+			responses = {
+					@OpenApiResponse(status = "200", content = @OpenApiContent(from = double.class)),
+					@OpenApiResponse(status = "204") // No content
+			}
+	)
+*/	public void handle(io.javalin.http.Context ctx) throws Exception
 	{
 		ctx.json(generate(ctx));
 	}

@@ -3,6 +3,11 @@ package de.elbosso.microgenerator;
 import io.javalin.Javalin;
 import io.javalin.core.util.RouteOverviewPlugin;
 import io.javalin.http.Context;
+import io.javalin.plugin.openapi.OpenApiOptions;
+import io.javalin.plugin.openapi.OpenApiPlugin;
+import io.javalin.plugin.openapi.ui.ReDocOptions;
+import io.javalin.plugin.openapi.ui.SwaggerOptions;
+import io.swagger.v3.oas.models.info.Info;
 
 import java.io.IOException;
 
@@ -11,7 +16,10 @@ public class GeneratorMicroservicesApp
 
 	public static void main(String[] args) {
 		Javalin app = Javalin.create(config ->
-				config.registerPlugin(new RouteOverviewPlugin("/"))).start(7000);
+				config
+						.registerPlugin(new RouteOverviewPlugin("/"))
+		.registerPlugin(new OpenApiPlugin(getOpenApiOptions()))
+		.enableWebjars()).start(7000);
 		de.elbosso.microgenerator.handlers.date.SimpleRandomDateInThePastSequence.register(app);
 		de.elbosso.microgenerator.handlers.image.QRCodeImageSequence.register(app);
 		de.elbosso.microgenerator.handlers.number.GaussianRandomBoxMuller.register(app);
@@ -40,5 +48,15 @@ public class GeneratorMicroservicesApp
 		de.elbosso.microgenerator.handlers.string.FamilyBusinessSequence.register(app);
 	}
 
-
+	private static OpenApiOptions getOpenApiOptions()
+	{
+		Info applicationInfo = new Info()
+			.version("1.0.0")
+			.description("de.elbosso.generator-microservices");
+		return new OpenApiOptions(applicationInfo)
+				.path("/swagger-docs")
+				.swagger(new SwaggerOptions("/swagger").title("My Swagger Documentation"))
+//				.reDoc(new ReDocOptions("/redoc").title("My ReDoc Documentation"))
+		;
+	}
 }
