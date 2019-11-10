@@ -39,7 +39,7 @@ import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2019-11-10T17:06:24.36Z")
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2019-11-10T19:14:52.243Z")
 public class DateIncrementSequenceHandler extends
 java.lang.Object implements io.javalin.http.Handler
 {
@@ -48,7 +48,7 @@ java.lang.Object implements io.javalin.http.Handler
 	public static void register(io.javalin.Javalin app)
 	{
 		DateIncrementSequenceHandler handler=new DateIncrementSequenceHandler();
-		app.get("/hausNummer/", handler);
+		app.get("/dateIncrement/", handler);
 	}
 
 	public DateIncrementSequenceHandler()
