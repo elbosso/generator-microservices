@@ -32,72 +32,60 @@ UNERLAUBTE HANDLUNG (INKLUSIVE FAHRLAESSIGKEIT) VERANTWORTLICH, AUF WELCHEM
 WEG SIE AUCH IMMER DURCH DIE BENUTZUNG DIESER SOFTWARE ENTSTANDEN SIND, SOGAR, 
 WENN SIE AUF DIE MOEGLICHKEIT EINES SOLCHEN SCHADENS HINGEWIESEN WORDEN SIND.
 */
-package de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage;
+package de.elbosso.microgenerator.handlers.java.util.date;
 
 import io.javalin.plugin.openapi.annotations.OpenApi;
 import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2019-11-10T17:06:22.853Z")
-public class ConstantTestPatternImageSequenceHandler extends
-de.elbosso.microgenerator.handlers.image.PNGEncoder
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2019-11-10T17:06:24.36Z")
+public class DateIncrementSequenceHandler extends
+java.lang.Object implements io.javalin.http.Handler
 {
-	private final de.elbosso.util.generator.generalpurpose.ConstantTestPatternImageSequence generator=new de.elbosso.util.generator.generalpurpose.ConstantTestPatternImageSequence();
+	private final de.netsysit.util.generator.generalpurpose.DateIncrementSequence generator=new de.netsysit.util.generator.generalpurpose.DateIncrementSequence();
 
 	public static void register(io.javalin.Javalin app)
 	{
-		ConstantTestPatternImageSequenceHandler handler=new ConstantTestPatternImageSequenceHandler();
-		app.get("/testPatternImg/", handler);
+		DateIncrementSequenceHandler handler=new DateIncrementSequenceHandler();
+		app.get("/hausNummer/", handler);
 	}
 
-	public ConstantTestPatternImageSequenceHandler()
+	public DateIncrementSequenceHandler()
 	{
 		super();
 	}
 
 	@Override
 	@OpenApi(
-			summary = "Get ConstantTestPatternImageSequence",
+			summary = "Get DateIncrementSequence",
 			deprecated = false,
 			//tags = {"user"},
 			queryParams = {
-					@OpenApiParam(name = "Height", type = int.class),
-					@OpenApiParam(name = "Width", type = int.class),
+					@OpenApiParam(name = "Increment", type = long.class),
 			},
 			responses = {
-					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.awt.image.BufferedImage.class)),
+					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.util.Date.class)),
 					@OpenApiResponse(status = "204") // No content
 			}
 	)
 	public void handle(io.javalin.http.Context ctx) throws Exception
 	{
-		ctx.result(generate(ctx));
+		ctx.json(generate(ctx));
 	}
-	private java.io.InputStream generate(io.javalin.http.Context ctx) throws java.io.IOException
+	private java.util.Date generate(io.javalin.http.Context ctx)
 	{
-        int Height=256;
+        long Increment=60000l;
         try
         {
-            Height=ctx.queryParam("Height",java.lang.Integer.class).getValue().intValue();
+            Increment=ctx.queryParam("Increment",java.lang.Long.class).getValue().longValue();
         }
         catch(java.lang.Throwable t)
         {
-            Height=256;
+            Increment=60000l;
         }
-        generator.setHeight(Height);
-        int Width=320;
-        try
-        {
-            Width=ctx.queryParam("Width",java.lang.Integer.class).getValue().intValue();
-        }
-        catch(java.lang.Throwable t)
-        {
-            Width=320;
-        }
-        generator.setWidth(Width);
-		ctx.contentType("image/png");
-		return encode(generator.next());
+        generator.setIncrement(Increment);
+		return generator.next();
 	}
 }
 

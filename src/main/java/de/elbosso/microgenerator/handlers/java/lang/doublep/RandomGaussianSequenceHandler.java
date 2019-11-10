@@ -32,72 +32,71 @@ UNERLAUBTE HANDLUNG (INKLUSIVE FAHRLAESSIGKEIT) VERANTWORTLICH, AUF WELCHEM
 WEG SIE AUCH IMMER DURCH DIE BENUTZUNG DIESER SOFTWARE ENTSTANDEN SIND, SOGAR, 
 WENN SIE AUF DIE MOEGLICHKEIT EINES SOLCHEN SCHADENS HINGEWIESEN WORDEN SIND.
 */
-package de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage;
+package de.elbosso.microgenerator.handlers.java.lang.doublep;
 
 import io.javalin.plugin.openapi.annotations.OpenApi;
 import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2019-11-10T17:06:22.853Z")
-public class ConstantTestPatternImageSequenceHandler extends
-de.elbosso.microgenerator.handlers.image.PNGEncoder
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2019-11-10T17:06:24.265Z")
+public class RandomGaussianSequenceHandler extends
+java.lang.Object implements io.javalin.http.Handler
 {
-	private final de.elbosso.util.generator.generalpurpose.ConstantTestPatternImageSequence generator=new de.elbosso.util.generator.generalpurpose.ConstantTestPatternImageSequence();
+	private final de.netsysit.util.generator.generalpurpose.RandomGaussianSequence generator=new de.netsysit.util.generator.generalpurpose.RandomGaussianSequence();
 
 	public static void register(io.javalin.Javalin app)
 	{
-		ConstantTestPatternImageSequenceHandler handler=new ConstantTestPatternImageSequenceHandler();
-		app.get("/testPatternImg/", handler);
+		RandomGaussianSequenceHandler handler=new RandomGaussianSequenceHandler();
+		app.get("/randomGaussian/", handler);
 	}
 
-	public ConstantTestPatternImageSequenceHandler()
+	public RandomGaussianSequenceHandler()
 	{
 		super();
 	}
 
 	@Override
 	@OpenApi(
-			summary = "Get ConstantTestPatternImageSequence",
+			summary = "Get RandomGaussianSequence",
 			deprecated = false,
 			//tags = {"user"},
 			queryParams = {
-					@OpenApiParam(name = "Height", type = int.class),
-					@OpenApiParam(name = "Width", type = int.class),
+					@OpenApiParam(name = "Sigma", type = double.class),
+					@OpenApiParam(name = "Mue", type = double.class),
 			},
 			responses = {
-					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.awt.image.BufferedImage.class)),
+					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.lang.Double.class)),
 					@OpenApiResponse(status = "204") // No content
 			}
 	)
 	public void handle(io.javalin.http.Context ctx) throws Exception
 	{
-		ctx.result(generate(ctx));
+		ctx.json(generate(ctx));
 	}
-	private java.io.InputStream generate(io.javalin.http.Context ctx) throws java.io.IOException
+	private java.lang.Double generate(io.javalin.http.Context ctx)
 	{
-        int Height=256;
+        double Sigma=1.0;
         try
         {
-            Height=ctx.queryParam("Height",java.lang.Integer.class).getValue().intValue();
+            Sigma=ctx.queryParam("Sigma",java.lang.Double.class).getValue().doubleValue();
         }
         catch(java.lang.Throwable t)
         {
-            Height=256;
+            Sigma=1.0;
         }
-        generator.setHeight(Height);
-        int Width=320;
+        generator.setSigma(Sigma);
+        double Mue=0.0;
         try
         {
-            Width=ctx.queryParam("Width",java.lang.Integer.class).getValue().intValue();
+            Mue=ctx.queryParam("Mue",java.lang.Double.class).getValue().doubleValue();
         }
         catch(java.lang.Throwable t)
         {
-            Width=320;
+            Mue=0.0;
         }
-        generator.setWidth(Width);
-		ctx.contentType("image/png");
-		return encode(generator.next());
+        generator.setMue(Mue);
+		return generator.next();
 	}
 }
 

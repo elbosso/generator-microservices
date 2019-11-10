@@ -39,7 +39,7 @@ import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2019-11-10T14:18:44.728Z")
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2019-11-10T17:06:23.568Z")
 public class HTMLDinBriefSequenceHandler extends
 java.lang.Object implements io.javalin.http.Handler
 {
@@ -62,13 +62,14 @@ java.lang.Object implements io.javalin.http.Handler
 			deprecated = false,
 			//tags = {"user"},
 			responses = {
-					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.lang.String.class)),
+					@OpenApiResponse(status = "200", content = @OpenApiContent(type = "text/html")),
 					@OpenApiResponse(status = "204") // No content
 			}
 	)
 	public void handle(io.javalin.http.Context ctx) throws Exception
 	{
-		ctx.json(generate(ctx));
+        ctx.contentType("text/html");
+        ctx.result(generate(ctx));
 	}
 	private java.lang.String generate(io.javalin.http.Context ctx)
 	{

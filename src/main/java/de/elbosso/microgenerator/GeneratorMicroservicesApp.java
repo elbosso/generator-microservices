@@ -22,8 +22,10 @@ public class GeneratorMicroservicesApp
 		.enableWebjars()
 				.addStaticFiles("/site")
 		).start(7000);
+		de.elbosso.microgenerator.handlers.java.lang.booleanp.BiasedBooleanSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.ClickBaitSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.HTMLDinBriefSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.lang.string.QRCodeSVGSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.number.GaussianRandomBoxMullerHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.util.date.NowHandler.register(app);
 		de.elbosso.microgenerator.handlers.de.elbosso.util.generator.semantics.creditcard.CreditCardSequenceHandler.register(app);

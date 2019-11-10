@@ -32,72 +32,82 @@ UNERLAUBTE HANDLUNG (INKLUSIVE FAHRLAESSIGKEIT) VERANTWORTLICH, AUF WELCHEM
 WEG SIE AUCH IMMER DURCH DIE BENUTZUNG DIESER SOFTWARE ENTSTANDEN SIND, SOGAR, 
 WENN SIE AUF DIE MOEGLICHKEIT EINES SOLCHEN SCHADENS HINGEWIESEN WORDEN SIND.
 */
-package de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage;
+package de.elbosso.microgenerator.handlers.java.lang.doublep;
 
 import io.javalin.plugin.openapi.annotations.OpenApi;
 import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2019-11-10T17:06:22.853Z")
-public class ConstantTestPatternImageSequenceHandler extends
-de.elbosso.microgenerator.handlers.image.PNGEncoder
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2019-11-10T17:06:24.66Z")
+public class DoubleIncrementSequenceHandler extends
+java.lang.Object implements io.javalin.http.Handler
 {
-	private final de.elbosso.util.generator.generalpurpose.ConstantTestPatternImageSequence generator=new de.elbosso.util.generator.generalpurpose.ConstantTestPatternImageSequence();
+	private final de.netsysit.util.generator.generalpurpose.DoubleIncrementSequence generator=new de.netsysit.util.generator.generalpurpose.DoubleIncrementSequence();
 
 	public static void register(io.javalin.Javalin app)
 	{
-		ConstantTestPatternImageSequenceHandler handler=new ConstantTestPatternImageSequenceHandler();
-		app.get("/testPatternImg/", handler);
+		DoubleIncrementSequenceHandler handler=new DoubleIncrementSequenceHandler();
+		app.get("/doubleIncrement/", handler);
 	}
 
-	public ConstantTestPatternImageSequenceHandler()
+	public DoubleIncrementSequenceHandler()
 	{
 		super();
 	}
 
 	@Override
 	@OpenApi(
-			summary = "Get ConstantTestPatternImageSequence",
+			summary = "Get DoubleIncrementSequence",
 			deprecated = false,
 			//tags = {"user"},
 			queryParams = {
-					@OpenApiParam(name = "Height", type = int.class),
-					@OpenApiParam(name = "Width", type = int.class),
+					@OpenApiParam(name = "Increment", type = double.class),
+					@OpenApiParam(name = "StartValue", type = double.class),
+					@OpenApiParam(name = "Repeat", type = boolean.class),
 			},
 			responses = {
-					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.awt.image.BufferedImage.class)),
+					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.lang.Double.class)),
 					@OpenApiResponse(status = "204") // No content
 			}
 	)
 	public void handle(io.javalin.http.Context ctx) throws Exception
 	{
-		ctx.result(generate(ctx));
+		ctx.json(generate(ctx));
 	}
-	private java.io.InputStream generate(io.javalin.http.Context ctx) throws java.io.IOException
+	private java.lang.Double generate(io.javalin.http.Context ctx)
 	{
-        int Height=256;
+        double Increment=1.0;
         try
         {
-            Height=ctx.queryParam("Height",java.lang.Integer.class).getValue().intValue();
+            Increment=ctx.queryParam("Increment",java.lang.Double.class).getValue().doubleValue();
         }
         catch(java.lang.Throwable t)
         {
-            Height=256;
+            Increment=1.0;
         }
-        generator.setHeight(Height);
-        int Width=320;
+        generator.setIncrement(Increment);
+        double StartValue=java.lang.Double.MAX_VALUE;
         try
         {
-            Width=ctx.queryParam("Width",java.lang.Integer.class).getValue().intValue();
+            StartValue=ctx.queryParam("StartValue",java.lang.Double.class).getValue().doubleValue();
         }
         catch(java.lang.Throwable t)
         {
-            Width=320;
+            StartValue=java.lang.Double.MAX_VALUE;
         }
-        generator.setWidth(Width);
-		ctx.contentType("image/png");
-		return encode(generator.next());
+        generator.setStartValue(StartValue);
+        boolean Repeat=false;
+        try
+        {
+            Repeat=ctx.queryParam("Repeat",java.lang.Boolean.class).getValue().booleanValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            Repeat=false;
+        }
+        generator.setRepeat(Repeat);
+		return generator.next();
 	}
 }
 

@@ -39,7 +39,7 @@ import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2019-11-10T14:18:44.384Z")
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2019-11-10T17:06:23.189Z")
 public class QRCodeSVGSequenceHandler extends
 java.lang.Object implements io.javalin.http.Handler
 {
@@ -65,13 +65,14 @@ java.lang.Object implements io.javalin.http.Handler
 					@OpenApiParam(name = "DimensionWidth", type = int.class),
 			},
 			responses = {
-					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.lang.String.class)),
+					@OpenApiResponse(status = "200", content = @OpenApiContent(type = "image/svg+xml")),
 					@OpenApiResponse(status = "204") // No content
 			}
 	)
 	public void handle(io.javalin.http.Context ctx) throws Exception
 	{
-		ctx.json(generate(ctx));
+        ctx.contentType("image/svg+xml");
+        ctx.result(generate(ctx));
 	}
 	private java.lang.String generate(io.javalin.http.Context ctx)
 	{
