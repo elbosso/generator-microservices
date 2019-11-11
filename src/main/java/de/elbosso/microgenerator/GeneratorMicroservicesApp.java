@@ -108,7 +108,6 @@ public class GeneratorMicroservicesApp
 		de.elbosso.microgenerator.handlers.java.lang.string.RandomUserAgentSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.RomanNumeralSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.SurNameSequenceHandler.register(app);
-		de.elbosso.microgenerator.handlers.java.lang.string.TOTPHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.TeXDinBriefSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.UrlSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.GUIDSequenceHandler.register(app);
