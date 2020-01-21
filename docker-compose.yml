@@ -11,10 +11,9 @@ services:
 #      - 7000:7000
     restart: always
     labels:
-      - "traefik.backend=generator-microservices"
       - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:generator-microservices.docker.lab"
-      - "traefik.port=7000"
+      - "traefik.http.routers.generator-microservices.rule=Host(`generator-microservices.docker.lab`)"
+      - "traefik.http.services.generator-microservices.loadbalancer.server.port=7000"
       - "traefik.docker.network=traefik_proxy"
     networks:
       - traefik_proxy
