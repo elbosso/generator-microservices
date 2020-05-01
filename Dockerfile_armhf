@@ -1,0 +1,17 @@
+#Build stage
+FROM arm32v7/maven AS build-env
+
+ADD . /generator-microservices
+
+WORKDIR generator-microservices
+
+RUN mvn -U compile package
+
+# Run it
+FROM bellsoft/liberica-openjdk-alpine
+
+COPY --from=build-env /generator-microservices/target/*-jar-with-dependencies.jar /app/generator-microservices.jar
+
+EXPOSE 7000
+
+CMD ["java", "-jar", "/app/generator-microservices.jar"]
