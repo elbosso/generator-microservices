@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2012-2019.
+Copyright (c) 2012-2020.
 
 Juergen Key. Alle Rechte vorbehalten.
 
@@ -39,7 +39,7 @@ import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2019-11-10T17:06:24.109Z")
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-08-29T15:32:38.931Z")
 public class IntIncrementSequenceHandler extends
 java.lang.Object implements io.javalin.http.Handler
 {
@@ -87,14 +87,14 @@ java.lang.Object implements io.javalin.http.Handler
             Increment=1;
         }
         generator.setIncrement(Increment);
-        int StartValue=java.lang.Integer.MAX_VALUE;
+        int StartValue=2147483647;
         try
         {
             StartValue=ctx.queryParam("StartValue",java.lang.Integer.class).getValue().intValue();
         }
         catch(java.lang.Throwable t)
         {
-            StartValue=java.lang.Integer.MAX_VALUE;
+            StartValue=2147483647;
         }
         generator.setStartValue(StartValue);
         boolean Repeat=false;

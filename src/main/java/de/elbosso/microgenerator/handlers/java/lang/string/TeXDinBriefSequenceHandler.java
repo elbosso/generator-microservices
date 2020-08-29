@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2012-2019.
+Copyright (c) 2012-2020.
 
 Juergen Key. Alle Rechte vorbehalten.
 
@@ -39,7 +39,7 @@ import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2019-11-10T17:06:23.968Z")
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-08-29T15:32:38.880Z")
 public class TeXDinBriefSequenceHandler extends
 java.lang.Object implements io.javalin.http.Handler
 {

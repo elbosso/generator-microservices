@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2012-2019.
+Copyright (c) 2012-2020.
 
 Juergen Key. Alle Rechte vorbehalten.
 
@@ -39,7 +39,7 @@ import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2019-11-10T17:06:24.66Z")
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-08-29T15:32:38.914Z")
 public class DoubleIncrementSequenceHandler extends
 java.lang.Object implements io.javalin.http.Handler
 {
@@ -87,14 +87,14 @@ java.lang.Object implements io.javalin.http.Handler
             Increment=1.0;
         }
         generator.setIncrement(Increment);
-        double StartValue=java.lang.Double.MAX_VALUE;
+        double StartValue=1.7976931348623157E300;
         try
         {
             StartValue=ctx.queryParam("StartValue",java.lang.Double.class).getValue().doubleValue();
         }
         catch(java.lang.Throwable t)
         {
-            StartValue=java.lang.Double.MAX_VALUE;
+            StartValue=1.7976931348623157E300;
         }
         generator.setStartValue(StartValue);
         boolean Repeat=false;
