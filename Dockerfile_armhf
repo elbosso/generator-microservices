@@ -14,4 +14,4 @@ COPY --from=build-env /generator-microservices/target/*-jar-with-dependencies.ja
 
 EXPOSE 7000
 
-CMD ["java", "-jar", "/app/generator-microservices.jar"]
+CMD ["java", "-Djava.awt.headless=true", "-jar", "/app/generator-microservices.jar"]
