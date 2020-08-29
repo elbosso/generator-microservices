@@ -60,6 +60,12 @@
                         <argument>foo</argument>
                         <argument>bar</argument>
                     </arguments-->
+                    <systemProperties>
+                        <systemProperty>
+                            <key>java.awt.headless</key>
+                            <value>true</value>
+                        </systemProperty>
+                    </systemProperties>
                 </configuration>
             </plugin>
         </plugins>
@@ -204,6 +210,12 @@
             <groupId>org.iban4j</groupId>
             <artifactId>iban4j</artifactId>
             <version>3.2.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.14</version>
         </dependency>
     </dependencies>
 </project>

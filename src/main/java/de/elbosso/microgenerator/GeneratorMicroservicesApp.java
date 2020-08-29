@@ -117,6 +117,9 @@ public class GeneratorMicroservicesApp
 		de.elbosso.microgenerator.handlers.java.lang.string.PhoneNumberSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.PlacesSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.ZipSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.lang.string.JavaIdentifierSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.lang.string.BullshitPhrasesSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.lang.string.Base32PasswordSequenceHandler.register(app);
 	//java.lang.Number
 		de.elbosso.microgenerator.handlers.java.lang.number.GaussianRandomBoxMullerHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.number.NormalDistributedRandomHandler.register(app);
