@@ -39,11 +39,13 @@ import io.javalin.plugin.openapi.OpenApiOptions;
 import io.javalin.plugin.openapi.OpenApiPlugin;
 import io.javalin.plugin.openapi.ui.SwaggerOptions;
 import io.swagger.v3.oas.models.info.Info;
+import net.fortuna.ical4j.util.MapTimeZoneCache;
 
 public class GeneratorMicroservicesApp
 {
 
 	public static void main(String[] args) {
+		System.setProperty("net.fortuna.ical4j.timezone.cache.impl", MapTimeZoneCache.class.getName());
 		Javalin app = Javalin.create(config ->
 				config
 //						.registerPlugin(new RouteOverviewPlugin("/"))
@@ -120,6 +122,10 @@ public class GeneratorMicroservicesApp
 		de.elbosso.microgenerator.handlers.java.lang.string.JavaIdentifierSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.BullshitPhrasesSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.Base32PasswordSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.lang.string.ProductSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.lang.string.ICalSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.lang.string.VCardSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.lang.string.FakeIdentitySequenceHandler.register(app);
 	//java.lang.Number
 		de.elbosso.microgenerator.handlers.java.lang.number.GaussianRandomBoxMullerHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.number.NormalDistributedRandomHandler.register(app);

@@ -39,7 +39,7 @@ import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-08-29T16:01:43.154Z")
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-05T13:57:12.587Z")
 public class DungeonMazeImageSequenceHandler extends
 de.elbosso.microgenerator.handlers.image.PNGEncoder
 {
@@ -66,6 +66,7 @@ de.elbosso.microgenerator.handlers.image.PNGEncoder
 					@OpenApiParam(name = "WidthSigma", type = int.class),
 					@OpenApiParam(name = "WidthMue", type = int.class),
 					@OpenApiParam(name = "HeightSigma", type = int.class),
+					@OpenApiParam(name = "WithRooms", type = boolean.class),
 			},
 			responses = {
 					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.awt.image.BufferedImage.class)),
@@ -118,6 +119,16 @@ de.elbosso.microgenerator.handlers.image.PNGEncoder
             HeightSigma=5;
         }
         generator.setHeightSigma(HeightSigma);
+        boolean WithRooms=false;
+        try
+        {
+            WithRooms=ctx.queryParam("WithRooms",java.lang.Boolean.class).getValue().booleanValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            WithRooms=false;
+        }
+        generator.setWithRooms(WithRooms);
 		ctx.contentType("image/png");
 		return encode(generator.next());
 	}
