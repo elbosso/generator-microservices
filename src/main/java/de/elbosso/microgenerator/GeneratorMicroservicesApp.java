@@ -127,6 +127,7 @@ public class GeneratorMicroservicesApp
 		de.elbosso.microgenerator.handlers.java.lang.string.VCardSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.FakeIdentitySequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.XmlFragmentSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.lang.string.OpenApiSequenceHandler.register(app);
 	//java.lang.Number
 		de.elbosso.microgenerator.handlers.java.lang.number.GaussianRandomBoxMullerHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.number.NormalDistributedRandomHandler.register(app);
