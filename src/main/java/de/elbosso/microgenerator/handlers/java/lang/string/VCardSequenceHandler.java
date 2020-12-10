@@ -74,18 +74,26 @@ Object implements io.javalin.http.Handler
 	private String generate(io.javalin.http.Context ctx) throws IOException, VCardBuildException
 	{
 		java.io.StringWriter sw=new java.io.StringWriter();
-		net.sourceforge.cardme.vcard.VCard vCard=vCardSequence.next();
-		java.io.PrintWriter pw=new java.io.PrintWriter(sw);
-		net.sourceforge.cardme.io.VCardWriter vcardWriter = new net.sourceforge.cardme.io.VCardWriter();
-		vcardWriter.setOutputVersion(net.sourceforge.cardme.vcard.arch.VCardVersion.V3_0);
-		vcardWriter.setFoldingScheme(net.sourceforge.cardme.io.FoldingScheme.MIME_DIR);
-		vcardWriter.setCompatibilityMode(net.sourceforge.cardme.io.CompatibilityMode.RFC2426);
-		vcardWriter.setBinaryfoldingScheme(net.sourceforge.cardme.io.BinaryFoldingScheme.MIME_DIR);
-		vcardWriter.setVCard(vCard);
+		while (true)
+		{
+			try
+			{
+				net.sourceforge.cardme.vcard.VCard vCard = vCardSequence.next();
+				java.io.PrintWriter pw = new java.io.PrintWriter(sw);
+				net.sourceforge.cardme.io.VCardWriter vcardWriter = new net.sourceforge.cardme.io.VCardWriter();
+				vcardWriter.setOutputVersion(net.sourceforge.cardme.vcard.arch.VCardVersion.V3_0);
+				vcardWriter.setFoldingScheme(net.sourceforge.cardme.io.FoldingScheme.MIME_DIR);
+				vcardWriter.setCompatibilityMode(net.sourceforge.cardme.io.CompatibilityMode.RFC2426);
+				vcardWriter.setBinaryfoldingScheme(net.sourceforge.cardme.io.BinaryFoldingScheme.MIME_DIR);
+				vcardWriter.setVCard(vCard);
 
-		String vcardString = vcardWriter.buildVCardString();
-		pw.println(vcardString);
-		pw.close();
+				String vcardString = vcardWriter.buildVCardString();
+				pw.println(vcardString);
+				pw.close();
+				break;
+			}
+			catch(Throwable t){}
+		}
 		return sw.toString();
 	}
 }
