@@ -8,7 +8,9 @@
     <version>2.1.0-SNAPSHOT</version>
     <url>http://elbosso.github.io</url>
     <packaging>jar</packaging>
-
+    <scm>
+        <developerConnection>scm:git:https://github.com/elbosso/generator-microservices.git</developerConnection>
+    </scm>
     <properties>
         <project.custom.encoding>UTF-8</project.custom.encoding>
         <project.custom.java.version>11</project.custom.java.version>
@@ -27,7 +29,7 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <version>3.0.0-M1</version>
                 <configuration>
-                    <preparationGoals>package assembly:single</preparationGoals>
+                    <!--preparationGoals>package assembly:single</preparationGoals-->
                 </configuration>
             </plugin>
             <plugin>
