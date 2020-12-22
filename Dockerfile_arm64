@@ -1,0 +1,23 @@
+#Build stage
+FROM arm64v8/maven AS build-env
+
+ADD . /generator-microservices
+
+WORKDIR generator-microservices
+
+RUN mvn -U compile package
+
+# Run it
+FROM bellsoft/liberica-openjdk-debian
+
+#RUN apk add --no-cache ttf-dejavu fontconfig libfontconfig
+
+#RUN ln -s /lib/libc.musl-x86_64.so.1 /usr/lib/libc.musl-x86_64.so.1
+
+#ENV LD_LIBRARY_PATH /usr/lib
+
+COPY --from=build-env /generator-microservices/target/*-jar-with-dependencies.jar /app/generator-microservices.jar
+
+EXPOSE 7000
+
+CMD ["java", "-Djava.awt.headless=true", "-jar", "/app/generator-microservices.jar"]
