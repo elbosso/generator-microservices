@@ -39,26 +39,26 @@ import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-05T13:57:12.672Z")
-public class NameSequenceHandler extends
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-05T13:57:12.685Z")
+public class ProductSequenceHandler extends
 java.lang.Object implements io.javalin.http.Handler
 {
-	private final de.elbosso.util.generator.semantics.NameSequence generator=new de.elbosso.util.generator.semantics.NameSequence();
+	private final de.elbosso.util.generator.semantics.ProductSequence generator=new de.elbosso.util.generator.semantics.ProductSequence();
 
 	public static void register(io.javalin.Javalin app)
 	{
-		NameSequenceHandler handler=new NameSequenceHandler();
-		app.get("/name/", handler);
+		ProductSequenceHandler handler=new ProductSequenceHandler();
+		app.get("/product/", handler);
 	}
 
-	public NameSequenceHandler()
+	public ProductSequenceHandler()
 	{
 		super();
 	}
 
 	@Override
 	@OpenApi(
-			summary = "Get NameSequence",
+			summary = "Get ProductSequence",
 			deprecated = false,
 			//tags = {"user"},
 			responses = {

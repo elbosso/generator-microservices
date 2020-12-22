@@ -39,7 +39,7 @@ import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-08-29T16:01:43.83Z")
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-05T13:57:12.523Z")
 public class AvatarIconImageSequenceHandler extends
 de.elbosso.microgenerator.handlers.image.PNGEncoder
 {

@@ -36,43 +36,65 @@ package de.elbosso.microgenerator.handlers.java.lang.string;
 
 import io.javalin.plugin.openapi.annotations.OpenApi;
 import io.javalin.plugin.openapi.annotations.OpenApiContent;
-import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
+import net.sourceforge.cardme.vcard.exceptions.VCardBuildException;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-05T13:57:12.672Z")
-public class NameSequenceHandler extends
-java.lang.Object implements io.javalin.http.Handler
+import java.io.IOException;
+
+public class VCardSequenceHandler extends
+Object implements io.javalin.http.Handler
 {
-	private final de.elbosso.util.generator.semantics.NameSequence generator=new de.elbosso.util.generator.semantics.NameSequence();
+	private de.elbosso.util.generator.semantics.VCardSequence vCardSequence=new de.elbosso.util.generator.semantics.VCardSequence();
 
 	public static void register(io.javalin.Javalin app)
 	{
-		NameSequenceHandler handler=new NameSequenceHandler();
-		app.get("/name/", handler);
+		VCardSequenceHandler handler=new VCardSequenceHandler();
+		app.get("/vCard/", handler);
 	}
 
-	public NameSequenceHandler()
+	public VCardSequenceHandler()
 	{
 		super();
 	}
 
 	@Override
 	@OpenApi(
-			summary = "Get NameSequence",
+			summary = "Get VCardSequence",
 			deprecated = false,
 			//tags = {"user"},
 			responses = {
-					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.lang.String.class)),
+					@OpenApiResponse(status = "200", content = @OpenApiContent(from = String.class, type = "text/vcard")),
 					@OpenApiResponse(status = "204") // No content
 			}
 	)
 	public void handle(io.javalin.http.Context ctx) throws Exception
 	{
-		ctx.json(generate(ctx));
+		ctx.result(generate(ctx)).contentType("text/vcard");
 	}
-	private java.lang.String generate(io.javalin.http.Context ctx)
+	private String generate(io.javalin.http.Context ctx) throws IOException, VCardBuildException
 	{
-		return generator.next();
+		java.io.StringWriter sw=new java.io.StringWriter();
+		while (true)
+		{
+			try
+			{
+				net.sourceforge.cardme.vcard.VCard vCard = vCardSequence.next();
+				java.io.PrintWriter pw = new java.io.PrintWriter(sw);
+				net.sourceforge.cardme.io.VCardWriter vcardWriter = new net.sourceforge.cardme.io.VCardWriter();
+				vcardWriter.setOutputVersion(net.sourceforge.cardme.vcard.arch.VCardVersion.V3_0);
+				vcardWriter.setFoldingScheme(net.sourceforge.cardme.io.FoldingScheme.MIME_DIR);
+				vcardWriter.setCompatibilityMode(net.sourceforge.cardme.io.CompatibilityMode.RFC2426);
+				vcardWriter.setBinaryfoldingScheme(net.sourceforge.cardme.io.BinaryFoldingScheme.MIME_DIR);
+				vcardWriter.setVCard(vCard);
+
+				String vcardString = vcardWriter.buildVCardString();
+				pw.println(vcardString);
+				pw.close();
+				break;
+			}
+			catch(Throwable t){}
+		}
+		return sw.toString();
 	}
 }
 

@@ -34,45 +34,76 @@ WENN SIE AUF DIE MOEGLICHKEIT EINES SOLCHEN SCHADENS HINGEWIESEN WORDEN SIND.
 */
 package de.elbosso.microgenerator.handlers.java.lang.string;
 
+import de.elbosso.util.generator.semantics.openapi.Config;
+import de.elbosso.util.generator.semantics.xml.Customizations;
+import de.elbosso.util.generator.semantics.xml.SchemaAnalyzer;
 import io.javalin.plugin.openapi.annotations.OpenApi;
 import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
+import org.json.JSONException;
+import org.xml.sax.SAXException;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-05T13:57:12.672Z")
-public class NameSequenceHandler extends
-java.lang.Object implements io.javalin.http.Handler
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.stream.StreamResult;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.net.URISyntaxException;
+import java.util.Collections;
+
+public class OpenApiSequenceHandler extends
+Object implements io.javalin.http.Handler
 {
-	private final de.elbosso.util.generator.semantics.NameSequence generator=new de.elbosso.util.generator.semantics.NameSequence();
+	private de.elbosso.util.generator.semantics.VCardSequence vCardSequence=new de.elbosso.util.generator.semantics.VCardSequence();
 
 	public static void register(io.javalin.Javalin app)
 	{
-		NameSequenceHandler handler=new NameSequenceHandler();
-		app.get("/name/", handler);
+		OpenApiSequenceHandler handler=new OpenApiSequenceHandler();
+		app.get("/openApiFragment/", handler);
 	}
 
-	public NameSequenceHandler()
+	public OpenApiSequenceHandler()
 	{
 		super();
 	}
 
 	@Override
 	@OpenApi(
-			summary = "Get NameSequence",
+			description = "This is a highly fragile example - and one that does not show the true possibilities of this generator: " +
+					"There are multiple possibilities to customize the ways the resulting JSON is populated. The OpenApi Description and all its referenced" +
+					"elements must be reachable at exactly the given location for this generator to work",
+			summary = "Get XmlFragment",
 			deprecated = false,
 			//tags = {"user"},
+			queryParams = {
+					@OpenApiParam(name = "OpenApiSpec", type = String.class, description = "For example: https://petstore3.swagger.io/api/v3/openapi.json")
+			},
 			responses = {
-					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.lang.String.class)),
+					@OpenApiResponse(status = "200", content = @OpenApiContent(from = String.class, type = "text/vcard")),
 					@OpenApiResponse(status = "204") // No content
 			}
 	)
 	public void handle(io.javalin.http.Context ctx) throws Exception
 	{
-		ctx.json(generate(ctx));
+		ctx.result(generate(ctx)).contentType("application/json");
 	}
-	private java.lang.String generate(io.javalin.http.Context ctx)
+	private String generate(io.javalin.http.Context ctx) throws IOException, JSONException, URISyntaxException
 	{
-		return generator.next();
+		String openApiSpec=ctx.queryParam("OpenApiSpec", String.class).getValue();
+
+		StringWriter writer = new StringWriter();
+		de.elbosso.util.generator.semantics.openapi.OpenApi openAPI = new de.elbosso.util.generator.semantics.openapi.OpenApi(Collections.EMPTY_MAP,new Config(),new java.net.URI(openApiSpec));
+		java.util.Collection<java.lang.String> schemaTypeNames=openAPI.getSchemaTypeNames();
+		java.io.PrintWriter pw=new java.io.PrintWriter(writer);
+		org.json.JSONObject obj=new org.json.JSONObject();
+		for(java.lang.String schemaTypeName:schemaTypeNames)
+		{
+			obj.put(schemaTypeName,openAPI.produceJson(schemaTypeName));
+		}
+		pw.println(obj.toString(2));
+		pw.close();
+		writer.close();
+		return writer.toString();
 	}
 }
 

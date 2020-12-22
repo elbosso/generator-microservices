@@ -36,43 +36,54 @@ package de.elbosso.microgenerator.handlers.java.lang.string;
 
 import io.javalin.plugin.openapi.annotations.OpenApi;
 import io.javalin.plugin.openapi.annotations.OpenApiContent;
-import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-05T13:57:12.672Z")
-public class NameSequenceHandler extends
-java.lang.Object implements io.javalin.http.Handler
+import java.io.IOException;
+
+public class ICalSequenceHandler extends
+Object implements io.javalin.http.Handler
 {
-	private final de.elbosso.util.generator.semantics.NameSequence generator=new de.elbosso.util.generator.semantics.NameSequence();
+	private final de.elbosso.util.generator.semantics.ICalSequence iCalSequence=new de.elbosso.util.generator.semantics.ICalSequence();
 
 	public static void register(io.javalin.Javalin app)
 	{
-		NameSequenceHandler handler=new NameSequenceHandler();
-		app.get("/name/", handler);
+		ICalSequenceHandler handler=new ICalSequenceHandler();
+		app.get("/iCal/", handler);
 	}
 
-	public NameSequenceHandler()
+	public ICalSequenceHandler()
 	{
 		super();
 	}
 
 	@Override
 	@OpenApi(
-			summary = "Get NameSequence",
+			summary = "Get ICalSequence",
 			deprecated = false,
 			//tags = {"user"},
 			responses = {
-					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.lang.String.class)),
+					@OpenApiResponse(status = "200", content = @OpenApiContent(from = String.class, type = "text/calendar")),
 					@OpenApiResponse(status = "204") // No content
 			}
 	)
 	public void handle(io.javalin.http.Context ctx) throws Exception
 	{
-		ctx.json(generate(ctx));
+		ctx.result(generate(ctx)).contentType("text/calendar");
 	}
-	private java.lang.String generate(io.javalin.http.Context ctx)
+	private String generate(io.javalin.http.Context ctx) throws IOException
 	{
-		return generator.next();
+		java.io.StringWriter sw=new java.io.StringWriter();
+		while(true)
+		{
+			try
+			{
+				net.fortuna.ical4j.model.Calendar cal = iCalSequence.next();
+				new net.fortuna.ical4j.data.CalendarOutputter().output(cal, sw);
+				break;
+			}
+			catch(Throwable t){}
+		}
+		return sw.toString();
 	}
 }
 
