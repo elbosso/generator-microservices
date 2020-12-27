@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2012-2020.
+Copyright (c) 2012-2021.
 
 Juergen Key. Alle Rechte vorbehalten.
 
@@ -39,7 +39,7 @@ import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-05T13:57:12.587Z")
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-27T11:21:28.315Z")
 public class DungeonMazeImageSequenceHandler extends
 de.elbosso.microgenerator.handlers.image.PNGEncoder
 {
@@ -64,7 +64,11 @@ de.elbosso.microgenerator.handlers.image.PNGEncoder
 			queryParams = {
 					@OpenApiParam(name = "HeightMue", type = int.class),
 					@OpenApiParam(name = "WidthSigma", type = int.class),
+					@OpenApiParam(name = "WithSolution", type = boolean.class),
+					@OpenApiParam(name = "ThinWalls", type = boolean.class),
 					@OpenApiParam(name = "WidthMue", type = int.class),
+					@OpenApiParam(name = "OnlyRectangularRooms", type = boolean.class),
+					@OpenApiParam(name = "AllowBackTrack", type = boolean.class),
 					@OpenApiParam(name = "HeightSigma", type = int.class),
 					@OpenApiParam(name = "WithRooms", type = boolean.class),
 			},
@@ -99,6 +103,26 @@ de.elbosso.microgenerator.handlers.image.PNGEncoder
             WidthSigma=8;
         }
         generator.setWidthSigma(WidthSigma);
+        boolean WithSolution=true;
+        try
+        {
+            WithSolution=ctx.queryParam("WithSolution",java.lang.Boolean.class).getValue().booleanValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            WithSolution=true;
+        }
+        generator.setWithSolution(WithSolution);
+        boolean ThinWalls=false;
+        try
+        {
+            ThinWalls=ctx.queryParam("ThinWalls",java.lang.Boolean.class).getValue().booleanValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            ThinWalls=false;
+        }
+        generator.setThinWalls(ThinWalls);
         int WidthMue=30;
         try
         {
@@ -109,6 +133,26 @@ de.elbosso.microgenerator.handlers.image.PNGEncoder
             WidthMue=30;
         }
         generator.setWidthMue(WidthMue);
+        boolean OnlyRectangularRooms=true;
+        try
+        {
+            OnlyRectangularRooms=ctx.queryParam("OnlyRectangularRooms",java.lang.Boolean.class).getValue().booleanValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            OnlyRectangularRooms=true;
+        }
+        generator.setOnlyRectangularRooms(OnlyRectangularRooms);
+        boolean AllowBackTrack=true;
+        try
+        {
+            AllowBackTrack=ctx.queryParam("AllowBackTrack",java.lang.Boolean.class).getValue().booleanValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            AllowBackTrack=true;
+        }
+        generator.setAllowBackTrack(AllowBackTrack);
         int HeightSigma=5;
         try
         {

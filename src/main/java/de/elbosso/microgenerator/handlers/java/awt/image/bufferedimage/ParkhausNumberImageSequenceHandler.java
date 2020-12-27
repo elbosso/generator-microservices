@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2012-2020.
+Copyright (c) 2012-2021.
 
 Juergen Key. Alle Rechte vorbehalten.
 
@@ -39,7 +39,7 @@ import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-05T13:57:12.493Z")
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-27T11:21:28.218Z")
 public class ParkhausNumberImageSequenceHandler extends
 de.elbosso.microgenerator.handlers.image.PNGEncoder
 {
