@@ -39,7 +39,7 @@ import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-27T11:21:28.315Z")
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-28T13:17:02.599Z")
 public class DungeonMazeImageSequenceHandler extends
 de.elbosso.microgenerator.handlers.image.PNGEncoder
 {
@@ -63,6 +63,7 @@ de.elbosso.microgenerator.handlers.image.PNGEncoder
 			//tags = {"user"},
 			queryParams = {
 					@OpenApiParam(name = "HeightMue", type = int.class),
+					@OpenApiParam(name = "RemoveWallsWhenErasingCulDeSacs", type = boolean.class),
 					@OpenApiParam(name = "WidthSigma", type = int.class),
 					@OpenApiParam(name = "WithSolution", type = boolean.class),
 					@OpenApiParam(name = "ThinWalls", type = boolean.class),
@@ -93,6 +94,16 @@ de.elbosso.microgenerator.handlers.image.PNGEncoder
             HeightMue=20;
         }
         generator.setHeightMue(HeightMue);
+        boolean RemoveWallsWhenErasingCulDeSacs=false;
+        try
+        {
+            RemoveWallsWhenErasingCulDeSacs=ctx.queryParam("RemoveWallsWhenErasingCulDeSacs",java.lang.Boolean.class).getValue().booleanValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            RemoveWallsWhenErasingCulDeSacs=false;
+        }
+        generator.setRemoveWallsWhenErasingCulDeSacs(RemoveWallsWhenErasingCulDeSacs);
         int WidthSigma=8;
         try
         {

@@ -39,28 +39,36 @@ import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-28T13:17:02.561Z")
-public class Base32PasswordSequenceHandler extends
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-28T13:17:02.617Z")
+public class DungeonMazeTextSequenceHandler extends
 java.lang.Object implements io.javalin.http.Handler
 {
-	private final de.elbosso.util.generator.semantics.Base32PasswordSequence generator=new de.elbosso.util.generator.semantics.Base32PasswordSequence();
+	private final de.elbosso.util.generator.semantics.DungeonMazeTextSequence generator=new de.elbosso.util.generator.semantics.DungeonMazeTextSequence();
 
 	public static void register(io.javalin.Javalin app)
 	{
-		Base32PasswordSequenceHandler handler=new Base32PasswordSequenceHandler();
-		app.get("/base32Password/", handler);
+		DungeonMazeTextSequenceHandler handler=new DungeonMazeTextSequenceHandler();
+		app.get("/dungeonMazeText/", handler);
 	}
 
-	public Base32PasswordSequenceHandler()
+	public DungeonMazeTextSequenceHandler()
 	{
 		super();
 	}
 
 	@Override
 	@OpenApi(
-			summary = "Get Base32PasswordSequence",
+			summary = "Get DungeonMazeTextSequence",
 			deprecated = false,
 			//tags = {"user"},
+			queryParams = {
+					@OpenApiParam(name = "HeightMue", type = int.class),
+					@OpenApiParam(name = "WidthSigma", type = int.class),
+					@OpenApiParam(name = "TronMode", type = boolean.class),
+					@OpenApiParam(name = "AnsiEscapes", type = boolean.class),
+					@OpenApiParam(name = "WidthMue", type = int.class),
+					@OpenApiParam(name = "HeightSigma", type = int.class),
+			},
 			responses = {
 					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.lang.String.class)),
 					@OpenApiResponse(status = "204") // No content
@@ -72,6 +80,66 @@ java.lang.Object implements io.javalin.http.Handler
 	}
 	private java.lang.String generate(io.javalin.http.Context ctx)
 	{
+        int HeightMue=15;
+        try
+        {
+            HeightMue=ctx.queryParam("HeightMue",java.lang.Integer.class).getValue().intValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            HeightMue=15;
+        }
+        generator.setHeightMue(HeightMue);
+        int WidthSigma=8;
+        try
+        {
+            WidthSigma=ctx.queryParam("WidthSigma",java.lang.Integer.class).getValue().intValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            WidthSigma=8;
+        }
+        generator.setWidthSigma(WidthSigma);
+        boolean TronMode=false;
+        try
+        {
+            TronMode=ctx.queryParam("TronMode",java.lang.Boolean.class).getValue().booleanValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            TronMode=false;
+        }
+        generator.setTronMode(TronMode);
+        boolean AnsiEscapes=false;
+        try
+        {
+            AnsiEscapes=ctx.queryParam("AnsiEscapes",java.lang.Boolean.class).getValue().booleanValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            AnsiEscapes=false;
+        }
+        generator.setAnsiEscapes(AnsiEscapes);
+        int WidthMue=50;
+        try
+        {
+            WidthMue=ctx.queryParam("WidthMue",java.lang.Integer.class).getValue().intValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            WidthMue=50;
+        }
+        generator.setWidthMue(WidthMue);
+        int HeightSigma=5;
+        try
+        {
+            HeightSigma=ctx.queryParam("HeightSigma",java.lang.Integer.class).getValue().intValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            HeightSigma=5;
+        }
+        generator.setHeightSigma(HeightSigma);
 		return generator.next();
 	}
 }

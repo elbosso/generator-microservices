@@ -128,6 +128,7 @@ public class GeneratorMicroservicesApp
 		de.elbosso.microgenerator.handlers.java.lang.string.FakeIdentitySequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.XmlFragmentSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.OpenApiSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.lang.string.DungeonMazeTextSequenceHandler.register(app);
 	//java.lang.Number
 		de.elbosso.microgenerator.handlers.java.lang.number.GaussianRandomBoxMullerHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.number.NormalDistributedRandomHandler.register(app);
@@ -137,7 +138,7 @@ public class GeneratorMicroservicesApp
 	private static OpenApiOptions getOpenApiOptions()
 	{
 		Info applicationInfo = new Info()
-			.version("1.0.0")
+			.version("2.2.0-SNAPSHOT")
 			.description("de.elbosso.generator-microservices");
 		return new OpenApiOptions(applicationInfo)
 				.path("/open-api-spec")
