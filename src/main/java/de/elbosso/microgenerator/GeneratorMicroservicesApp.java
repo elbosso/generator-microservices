@@ -133,6 +133,9 @@ public class GeneratorMicroservicesApp
 		de.elbosso.microgenerator.handlers.java.lang.number.GaussianRandomBoxMullerHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.number.NormalDistributedRandomHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.number.OneDimensionalPerlinNoiseHandler.register(app);
+	//	org.json.JSONObject
+		de.elbosso.microgenerator.handlers.org.json.jsonobject.TrackerInfoSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.org.json.jsonobject.PlacemarkSequenceHandler.register(app);
 	}
 
 	private static OpenApiOptions getOpenApiOptions()

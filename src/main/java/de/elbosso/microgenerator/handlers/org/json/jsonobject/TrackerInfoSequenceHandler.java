@@ -32,45 +32,46 @@ UNERLAUBTE HANDLUNG (INKLUSIVE FAHRLAESSIGKEIT) VERANTWORTLICH, AUF WELCHEM
 WEG SIE AUCH IMMER DURCH DIE BENUTZUNG DIESER SOFTWARE ENTSTANDEN SIND, SOGAR, 
 WENN SIE AUF DIE MOEGLICHKEIT EINES SOLCHEN SCHADENS HINGEWIESEN WORDEN SIND.
 */
-package de.elbosso.microgenerator.handlers.java.lang.string;
+package de.elbosso.microgenerator.handlers.org.json.jsonobject;
 
 import io.javalin.plugin.openapi.annotations.OpenApi;
 import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-30T11:46:15.79Z")
-public class BullshitPhrasesSequenceHandler extends
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-30T11:42:17.548Z")
+public class TrackerInfoSequenceHandler extends
 java.lang.Object implements io.javalin.http.Handler
 {
-	private final de.elbosso.util.generator.semantics.BullshitPhrasesSequence generator=new de.elbosso.util.generator.semantics.BullshitPhrasesSequence();
+	private final de.elbosso.util.generator.semantics.TrackerInfoSequence generator=new de.elbosso.util.generator.semantics.TrackerInfoSequence();
 
 	public static void register(io.javalin.Javalin app)
 	{
-		BullshitPhrasesSequenceHandler handler=new BullshitPhrasesSequenceHandler();
-		app.get("/bullshitPhrases/", handler);
+		TrackerInfoSequenceHandler handler=new TrackerInfoSequenceHandler();
+		app.get("/trackerInfo/", handler);
 	}
 
-	public BullshitPhrasesSequenceHandler()
+	public TrackerInfoSequenceHandler()
 	{
 		super();
 	}
 
 	@Override
 	@OpenApi(
-			summary = "Get BullshitPhrasesSequence",
+			summary = "Get TrackerInfoSequence",
 			deprecated = false,
 			//tags = {"user"},
 			responses = {
-					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.lang.String.class)),
+					@OpenApiResponse(status = "200", content = @OpenApiContent(type = "application/json")),
 					@OpenApiResponse(status = "204") // No content
 			}
 	)
 	public void handle(io.javalin.http.Context ctx) throws Exception
 	{
-		ctx.json(generate(ctx));
+        ctx.contentType("application/json");
+        ctx.result(generate(ctx).toString(2));
 	}
-	private java.lang.String generate(io.javalin.http.Context ctx)
+	private org.json.JSONObject generate(io.javalin.http.Context ctx)
 	{
 		return generator.next();
 	}

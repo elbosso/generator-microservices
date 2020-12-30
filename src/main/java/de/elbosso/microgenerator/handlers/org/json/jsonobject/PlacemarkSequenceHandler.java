@@ -32,47 +32,82 @@ UNERLAUBTE HANDLUNG (INKLUSIVE FAHRLAESSIGKEIT) VERANTWORTLICH, AUF WELCHEM
 WEG SIE AUCH IMMER DURCH DIE BENUTZUNG DIESER SOFTWARE ENTSTANDEN SIND, SOGAR, 
 WENN SIE AUF DIE MOEGLICHKEIT EINES SOLCHEN SCHADENS HINGEWIESEN WORDEN SIND.
 */
-package de.elbosso.microgenerator.handlers.java.lang.string;
+package de.elbosso.microgenerator.handlers.org.json.jsonobject;
 
 import io.javalin.plugin.openapi.annotations.OpenApi;
 import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-30T11:46:15.79Z")
-public class BullshitPhrasesSequenceHandler extends
-java.lang.Object implements io.javalin.http.Handler
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-30T11:42:17.785Z")
+public class PlacemarkSequenceHandler extends
+Object implements io.javalin.http.Handler
 {
-	private final de.elbosso.util.generator.semantics.BullshitPhrasesSequence generator=new de.elbosso.util.generator.semantics.BullshitPhrasesSequence();
+	private final de.netsysit.util.generator.semantics.PlacemarkSequence generator=new de.netsysit.util.generator.semantics.PlacemarkSequence();
 
 	public static void register(io.javalin.Javalin app)
 	{
-		BullshitPhrasesSequenceHandler handler=new BullshitPhrasesSequenceHandler();
-		app.get("/bullshitPhrases/", handler);
+		PlacemarkSequenceHandler handler=new PlacemarkSequenceHandler();
+		app.get("/placemarkGeoJson/", handler);
 	}
 
-	public BullshitPhrasesSequenceHandler()
+	public PlacemarkSequenceHandler()
 	{
 		super();
 	}
 
 	@Override
 	@OpenApi(
-			summary = "Get BullshitPhrasesSequence",
+			summary = "Get PlacemarkSequence",
 			deprecated = false,
 			//tags = {"user"},
+			queryParams = {
+					@OpenApiParam(name = "Maxx", type = double.class),
+					@OpenApiParam(name = "Minx", type = double.class),
+					@OpenApiParam(name = "Miny", type = double.class),
+			},
 			responses = {
-					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.lang.String.class)),
+					@OpenApiResponse(status = "200", content = @OpenApiContent(from = org.json.JSONObject.class)),
 					@OpenApiResponse(status = "204") // No content
 			}
 	)
 	public void handle(io.javalin.http.Context ctx) throws Exception
 	{
-		ctx.json(generate(ctx));
+		ctx.result(generate(ctx).toString(2)).contentType("application/geo+json");
 	}
-	private java.lang.String generate(io.javalin.http.Context ctx)
+	private org.json.JSONObject generate(io.javalin.http.Context ctx) throws Exception
 	{
-		return generator.next();
+        double Maxx=-180;
+        try
+        {
+            Maxx=ctx.queryParam("Maxx", Double.class).getValue().doubleValue();
+        }
+        catch(Throwable t)
+        {
+            Maxx=-180;
+        }
+        generator.setMaxx(Maxx);
+        double Minx=180;
+        try
+        {
+            Minx=ctx.queryParam("Minx", Double.class).getValue().doubleValue();
+        }
+        catch(Throwable t)
+        {
+            Minx=180;
+        }
+        generator.setMinx(Minx);
+        double Miny=-90;
+        try
+        {
+            Miny=ctx.queryParam("Miny", Double.class).getValue().doubleValue();
+        }
+        catch(Throwable t)
+        {
+            Miny=-90;
+        }
+        generator.setMiny(Miny);
+		return generator.nextJson();
 	}
 }
 
