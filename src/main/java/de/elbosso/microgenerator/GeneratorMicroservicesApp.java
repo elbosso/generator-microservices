@@ -68,7 +68,7 @@ public class GeneratorMicroservicesApp
 		de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage.DungeonMazeImageSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage.TexEquationImageSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage.TruchetTilingSequenceHandler.register(app);
-//		de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage.TunnelImageSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage.TunnelImageSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage.WangDominoTilingSequenceHandler.register(app);
 	//java.lang.Double
 		de.elbosso.microgenerator.handlers.java.lang.doublep.DoubleIncrementSequenceHandler.register(app);

@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.22)  29 JAN 2021 15:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.22)  29 JAN 2021 16:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**\def\formula{c_{4}^{4}=\omega \sinh \left(\sqrt[2]{i\cosh \left(\gamma \right
-)}\right)}\input{formula.tex}
+**\def\formula{z_{3}\sim i\left\lfloor i\tan \left(m\right)-yi_{2}^{1}\right\rf
+loor}\input{formula.tex}
 (./formula.tex
 (/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls
 Document Class: standalone 2015/07/15 v1.2 Class to compile TeX sub-files stand
@@ -120,8 +120,7 @@ Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \sift@deathcycles=\count102
 \@vwid@loff=\dimen112
 \@vwid@roff=\dimen113
-)
-No file formula.aux.
+) (./formula.aux)
 \openout1 = `formula.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
@@ -140,20 +139,20 @@ LaTeX Font Info:    ... okay on input line 8.
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./formula.aux) ) 
 Here is how much of TeX's memory you used:
- 1346 strings out of 494871
- 18461 string characters out of 6178382
- 69487 words of memory out of 5000000
+ 1348 strings out of 494871
+ 18485 string characters out of 6178382
+ 68487 words of memory out of 5000000
  4718 multiletter control sequences out of 15000+600000
  4094 words of font info for 16 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 35i,10n,56p,319b,203s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 35i,5n,56p,314b,162s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr7.pfb>
-Output written on formula.pdf (1 page, 41805 bytes).
+st/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on formula.pdf (1 page, 41177 bytes).
 PDF statistics:
  28 PDF objects out of 1000 (max. 8388607)
  19 compressed objects within 1 object stream

@@ -48,7 +48,7 @@ de.elbosso.microgenerator.handlers.image.PNGEncoder
 	public static void register(io.javalin.Javalin app)
 	{
 		TunnelImageSequenceHandler handler=new TunnelImageSequenceHandler();
-		app.get("/truchetTilingImg/", handler);
+		app.get("/tunnelImg/", handler);
 	}
 
 	public TunnelImageSequenceHandler()

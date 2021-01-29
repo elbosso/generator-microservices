@@ -48,7 +48,7 @@ de.elbosso.microgenerator.handlers.image.PNGEncoder
 	public static void register(io.javalin.Javalin app)
 	{
 		TexEquationImageSequenceHandler handler=new TexEquationImageSequenceHandler();
-		app.get("/texEquationMazeImg/", handler);
+		app.get("/texEquationImg/", handler);
 	}
 
 	public TexEquationImageSequenceHandler()
