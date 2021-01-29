@@ -66,6 +66,10 @@ public class GeneratorMicroservicesApp
 		de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage.SevenSegmentNumberImageSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage.AvatarIconImageSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage.DungeonMazeImageSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage.TexEquationImageSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage.TruchetTilingSequenceHandler.register(app);
+//		de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage.TunnelImageSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage.WangDominoTilingSequenceHandler.register(app);
 	//java.lang.Double
 		de.elbosso.microgenerator.handlers.java.lang.doublep.DoubleIncrementSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.doublep.NrRandomizer0Handler.register(app);
@@ -85,6 +89,8 @@ public class GeneratorMicroservicesApp
 		de.elbosso.microgenerator.handlers.java.lang.integer.RandomIntSequenceHandler.register(app);
 	//de.elbosso.util.generator.semantics.CreditCard
 		de.elbosso.microgenerator.handlers.de.elbosso.util.generator.semantics.creditcard.CreditCardSequenceHandler.register(app);
+	//	de.elbosso.util.generator.semantics.Quotation
+		de.elbosso.microgenerator.handlers.de.elbosso.util.generator.semantics.quotation.QuotationSequenceHandler.register(app);
 	//java.lang.Long
 		de.elbosso.microgenerator.handlers.java.lang.longp.RandomLongSequenceHandler.register(app);
 	//java.lang.Short
@@ -129,6 +135,7 @@ public class GeneratorMicroservicesApp
 		de.elbosso.microgenerator.handlers.java.lang.string.XmlFragmentSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.OpenApiSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.DungeonMazeTextSequenceHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.lang.string.TexEquationGeneratorHandler.register(app);
 	//java.lang.Number
 		de.elbosso.microgenerator.handlers.java.lang.number.GaussianRandomBoxMullerHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.number.NormalDistributedRandomHandler.register(app);

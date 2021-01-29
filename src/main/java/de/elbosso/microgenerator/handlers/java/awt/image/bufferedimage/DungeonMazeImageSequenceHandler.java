@@ -39,7 +39,7 @@ import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2020-12-30T11:46:15.124Z")
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2021-01-29T15:07:39.286Z")
 public class DungeonMazeImageSequenceHandler extends
 de.elbosso.microgenerator.handlers.image.PNGEncoder
 {
@@ -67,6 +67,7 @@ de.elbosso.microgenerator.handlers.image.PNGEncoder
 					@OpenApiParam(name = "WidthSigma", type = int.class),
 					@OpenApiParam(name = "WithSolution", type = boolean.class),
 					@OpenApiParam(name = "ThinWalls", type = boolean.class),
+					@OpenApiParam(name = "EllipticShape", type = boolean.class),
 					@OpenApiParam(name = "WidthMue", type = int.class),
 					@OpenApiParam(name = "OnlyRectangularRooms", type = boolean.class),
 					@OpenApiParam(name = "AllowBackTrack", type = boolean.class),
@@ -134,6 +135,16 @@ de.elbosso.microgenerator.handlers.image.PNGEncoder
             ThinWalls=false;
         }
         generator.setThinWalls(ThinWalls);
+        boolean EllipticShape=false;
+        try
+        {
+            EllipticShape=ctx.queryParam("EllipticShape",java.lang.Boolean.class).getValue().booleanValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            EllipticShape=false;
+        }
+        generator.setEllipticShape(EllipticShape);
         int WidthMue=30;
         try
         {

@@ -32,82 +32,94 @@ UNERLAUBTE HANDLUNG (INKLUSIVE FAHRLAESSIGKEIT) VERANTWORTLICH, AUF WELCHEM
 WEG SIE AUCH IMMER DURCH DIE BENUTZUNG DIESER SOFTWARE ENTSTANDEN SIND, SOGAR, 
 WENN SIE AUF DIE MOEGLICHKEIT EINES SOLCHEN SCHADENS HINGEWIESEN WORDEN SIND.
 */
-package de.elbosso.microgenerator.handlers.java.lang.number;
+package de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage;
 
 import io.javalin.plugin.openapi.annotations.OpenApi;
 import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2021-01-29T15:07:39.174Z")
-public class OneDimensionalPerlinNoiseHandler extends
-java.lang.Object implements io.javalin.http.Handler
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2021-01-29T15:07:39.228Z")
+public class WangDominoTilingSequenceHandler extends
+de.elbosso.microgenerator.handlers.image.PNGEncoder
 {
-	private final de.elbosso.util.generator.generalpurpose.OneDimensionalPerlinNoise generator=new de.elbosso.util.generator.generalpurpose.OneDimensionalPerlinNoise();
+	private final de.elbosso.util.generator.generalpurpose.WangDominoTilingSequence generator=new de.elbosso.util.generator.generalpurpose.WangDominoTilingSequence();
 
 	public static void register(io.javalin.Javalin app)
 	{
-		OneDimensionalPerlinNoiseHandler handler=new OneDimensionalPerlinNoiseHandler();
-		app.get("/oneDimensionalPerlinNoise/", handler);
+		WangDominoTilingSequenceHandler handler=new WangDominoTilingSequenceHandler();
+		app.get("/wangDominoTilingImg/", handler);
 	}
 
-	public OneDimensionalPerlinNoiseHandler()
+	public WangDominoTilingSequenceHandler()
 	{
 		super();
 	}
 
 	@Override
 	@OpenApi(
-			summary = "Get OneDimensionalPerlinNoise",
+			summary = "Get WangDominoTilingSequence",
 			deprecated = false,
 			//tags = {"user"},
 			queryParams = {
-					@OpenApiParam(name = "Min", type = double.class),
-					@OpenApiParam(name = "Max", type = double.class),
-					@OpenApiParam(name = "Frequency", type = double.class),
+					@OpenApiParam(name = "DimensionWidth", type = int.class),
+					@OpenApiParam(name = "PreferHomogenousRegions", type = boolean.class),
+					@OpenApiParam(name = "DimensionHeight", type = int.class),
+					@OpenApiParam(name = "Tilesize", type = int.class),
 			},
 			responses = {
-					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.lang.Number.class)),
+					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.awt.image.BufferedImage.class)),
 					@OpenApiResponse(status = "204") // No content
 			}
 	)
 	public void handle(io.javalin.http.Context ctx) throws Exception
 	{
-		ctx.json(generate(ctx));
+		ctx.result(generate(ctx));
 	}
-	private java.lang.Number generate(io.javalin.http.Context ctx)
+	private java.io.InputStream generate(io.javalin.http.Context ctx) throws java.io.IOException
 	{
-        double Min=-1.0;
+        int DimensionWidth=8;
         try
         {
-            Min=ctx.queryParam("Min",java.lang.Double.class).getValue().doubleValue();
+            DimensionWidth=ctx.queryParam("DimensionWidth",java.lang.Integer.class).getValue().intValue();
         }
         catch(java.lang.Throwable t)
         {
-            Min=-1.0;
+            DimensionWidth=8;
         }
-        generator.setMin(Min);
-        double Max=1.0;
+        generator.setDimensionWidth(DimensionWidth);
+        boolean PreferHomogenousRegions=true;
         try
         {
-            Max=ctx.queryParam("Max",java.lang.Double.class).getValue().doubleValue();
+            PreferHomogenousRegions=ctx.queryParam("PreferHomogenousRegions",java.lang.Boolean.class).getValue().booleanValue();
         }
         catch(java.lang.Throwable t)
         {
-            Max=1.0;
+            PreferHomogenousRegions=true;
         }
-        generator.setMax(Max);
-        double Frequency=1.0;
+        generator.setPreferHomogenousRegions(PreferHomogenousRegions);
+        int DimensionHeight=6;
         try
         {
-            Frequency=ctx.queryParam("Frequency",java.lang.Double.class).getValue().doubleValue();
+            DimensionHeight=ctx.queryParam("DimensionHeight",java.lang.Integer.class).getValue().intValue();
         }
         catch(java.lang.Throwable t)
         {
-            Frequency=1.0;
+            DimensionHeight=6;
         }
-        generator.setFrequency(Frequency);
-		return generator.next();
+        generator.setDimensionHeight(DimensionHeight);
+        int Tilesize=128;
+        try
+        {
+            Tilesize=ctx.queryParam("Tilesize",java.lang.Integer.class).getValue().intValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            Tilesize=128;
+        }
+        generator.setTilesize(Tilesize);
+		ctx.contentType("image/png");
+		return encode(generator.next());
 	}
 }
 

@@ -32,47 +32,83 @@ UNERLAUBTE HANDLUNG (INKLUSIVE FAHRLAESSIGKEIT) VERANTWORTLICH, AUF WELCHEM
 WEG SIE AUCH IMMER DURCH DIE BENUTZUNG DIESER SOFTWARE ENTSTANDEN SIND, SOGAR, 
 WENN SIE AUF DIE MOEGLICHKEIT EINES SOLCHEN SCHADENS HINGEWIESEN WORDEN SIND.
 */
-package de.elbosso.microgenerator.handlers.java.lang.string;
+package de.elbosso.microgenerator.handlers.java.awt.image.bufferedimage;
 
 import io.javalin.plugin.openapi.annotations.OpenApi;
 import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2021-01-29T15:07:39.258Z")
-public class ClickBaitSequenceHandler extends
-java.lang.Object implements io.javalin.http.Handler
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2021-01-29T15:07:39.211Z")
+public class TruchetTilingSequenceHandler extends
+de.elbosso.microgenerator.handlers.image.PNGEncoder
 {
-	private final de.elbosso.util.generator.semantics.ClickBaitSequence generator=new de.elbosso.util.generator.semantics.ClickBaitSequence();
+	private final de.elbosso.util.generator.generalpurpose.TruchetTilingSequence generator=new de.elbosso.util.generator.generalpurpose.TruchetTilingSequence();
 
 	public static void register(io.javalin.Javalin app)
 	{
-		ClickBaitSequenceHandler handler=new ClickBaitSequenceHandler();
-		app.get("/clickBait/", handler);
+		TruchetTilingSequenceHandler handler=new TruchetTilingSequenceHandler();
+		app.get("/truchetTilingImg/", handler);
 	}
 
-	public ClickBaitSequenceHandler()
+	public TruchetTilingSequenceHandler()
 	{
 		super();
 	}
 
 	@Override
 	@OpenApi(
-			summary = "Get ClickBaitSequence",
+			summary = "Get TruchetTilingSequence",
 			deprecated = false,
 			//tags = {"user"},
+			queryParams = {
+					@OpenApiParam(name = "DimensionWidth", type = int.class),
+					@OpenApiParam(name = "DimensionHeight", type = int.class),
+					@OpenApiParam(name = "Tilesize", type = int.class),
+			},
 			responses = {
-					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.lang.String.class)),
+					@OpenApiResponse(status = "200", content = @OpenApiContent(from = java.awt.image.BufferedImage.class)),
 					@OpenApiResponse(status = "204") // No content
 			}
 	)
 	public void handle(io.javalin.http.Context ctx) throws Exception
 	{
-		ctx.json(generate(ctx));
+		ctx.result(generate(ctx));
 	}
-	private java.lang.String generate(io.javalin.http.Context ctx)
+	private java.io.InputStream generate(io.javalin.http.Context ctx) throws java.io.IOException
 	{
-		return generator.next();
+        int DimensionWidth=4;
+        try
+        {
+            DimensionWidth=ctx.queryParam("DimensionWidth",java.lang.Integer.class).getValue().intValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            DimensionWidth=4;
+        }
+        generator.setDimensionWidth(DimensionWidth);
+        int DimensionHeight=4;
+        try
+        {
+            DimensionHeight=ctx.queryParam("DimensionHeight",java.lang.Integer.class).getValue().intValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            DimensionHeight=4;
+        }
+        generator.setDimensionHeight(DimensionHeight);
+        int Tilesize=256;
+        try
+        {
+            Tilesize=ctx.queryParam("Tilesize",java.lang.Integer.class).getValue().intValue();
+        }
+        catch(java.lang.Throwable t)
+        {
+            Tilesize=256;
+        }
+        generator.setTilesize(Tilesize);
+		ctx.contentType("image/png");
+		return encode(generator.next());
 	}
 }
 

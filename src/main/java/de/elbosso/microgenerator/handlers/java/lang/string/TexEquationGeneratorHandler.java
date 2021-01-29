@@ -39,26 +39,26 @@ import io.javalin.plugin.openapi.annotations.OpenApiContent;
 import io.javalin.plugin.openapi.annotations.OpenApiParam;
 import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 
-@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2021-01-29T15:07:39.258Z")
-public class ClickBaitSequenceHandler extends
+@javax.annotation.Generated(value="de.elbosso.util.processors.GeneratorRestHandlerProcessor", date="2021-01-29T15:07:39.436Z")
+public class TexEquationGeneratorHandler extends
 java.lang.Object implements io.javalin.http.Handler
 {
-	private final de.elbosso.util.generator.semantics.ClickBaitSequence generator=new de.elbosso.util.generator.semantics.ClickBaitSequence();
+	private final de.elbosso.util.generator.semantics.TexEquationGenerator generator=new de.elbosso.util.generator.semantics.TexEquationGenerator();
 
 	public static void register(io.javalin.Javalin app)
 	{
-		ClickBaitSequenceHandler handler=new ClickBaitSequenceHandler();
-		app.get("/clickBait/", handler);
+		TexEquationGeneratorHandler handler=new TexEquationGeneratorHandler();
+		app.get("/texEquationSourceCode/", handler);
 	}
 
-	public ClickBaitSequenceHandler()
+	public TexEquationGeneratorHandler()
 	{
 		super();
 	}
 
 	@Override
 	@OpenApi(
-			summary = "Get ClickBaitSequence",
+			summary = "Get TexEquationGenerator",
 			deprecated = false,
 			//tags = {"user"},
 			responses = {
