@@ -136,6 +136,8 @@ public class GeneratorMicroservicesApp
 		de.elbosso.microgenerator.handlers.java.lang.string.OpenApiSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.DungeonMazeTextSequenceHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.string.TexEquationGeneratorHandler.register(app);
+		de.elbosso.microgenerator.handlers.java.lang.string.ColourSequenceHandler.register(app);
+
 	//java.lang.Number
 		de.elbosso.microgenerator.handlers.java.lang.number.GaussianRandomBoxMullerHandler.register(app);
 		de.elbosso.microgenerator.handlers.java.lang.number.NormalDistributedRandomHandler.register(app);
