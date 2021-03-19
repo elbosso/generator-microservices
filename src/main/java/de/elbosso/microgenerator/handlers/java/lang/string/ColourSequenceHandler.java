@@ -45,6 +45,9 @@ Object implements io.javalin.http.Handler
 {
 	private final de.elbosso.util.generator.generalpurpose.RandomColor generator=new de.elbosso.util.generator.generalpurpose.RandomColor();
 
+	private float h=new java.util.Random().nextFloat();
+	private float increment=0.005f;
+
 	public static void register(io.javalin.Javalin app)
 	{
 		ColourSequenceHandler handler=new ColourSequenceHandler();
@@ -70,9 +73,12 @@ Object implements io.javalin.http.Handler
 	{
 		ctx.json(generate(ctx));
 	}
-	private Obj generate(io.javalin.http.Context ctx)
+	private Obj[] generate(io.javalin.http.Context ctx)
 	{
-		return new Obj(generator.next());
+		java.awt.Color steady=java.awt.Color.getHSBColor(h, 1,1);
+		h += increment;
+		h %= 1;
+		return new Obj[]{new Obj(generator.next()),new Obj(steady)};
 	}
 	public class Obj
 	{
