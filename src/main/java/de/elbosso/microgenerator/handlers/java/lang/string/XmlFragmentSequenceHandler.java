@@ -43,6 +43,7 @@ import io.javalin.plugin.openapi.annotations.OpenApiResponse;
 import net.sourceforge.cardme.vcard.exceptions.VCardBuildException;
 import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.stream.StreamResult;
 import java.io.IOException;
@@ -88,7 +89,7 @@ Object implements io.javalin.http.Handler
 	{
 		ctx.result(generate(ctx)).contentType("text/xml");
 	}
-	private String generate(io.javalin.http.Context ctx) throws IOException, TransformerException, SAXException, URISyntaxException,org.apache.xmlbeans.XmlException
+	private String generate(io.javalin.http.Context ctx) throws IOException, TransformerException, SAXException, URISyntaxException, org.apache.xmlbeans.XmlException, ParserConfigurationException
 	{
 		String schema=ctx.queryParam("Schema",java.lang.String.class).getValue();
 		String rootElementName=ctx.queryParam("RootElementName",java.lang.String.class).getValue();
